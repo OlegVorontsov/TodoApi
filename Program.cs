@@ -27,26 +27,28 @@ if(app.Environment.IsDevelopment())
   });
 }
 
-app.MapGet("/todoitems", async (TodoDb db) =>
+var todoItems = app.MapGroup("/todoitems");
+
+app.MapGet("/", async (TodoDb db) =>
                         await db.Todos.ToListAsync());
 
-app.MapGet("/todoitems/complete", async (TodoDb db) =>
+app.MapGet("/complete", async (TodoDb db) =>
                         await db.Todos.Where(t => t.IsComlete).ToListAsync());
 
-app.MapGet("/todoitems/{id}", async (int id, TodoDb db) =>
+app.MapGet("/{id}", async (int id, TodoDb db) =>
                         await db.Todos.FindAsync(id)
                         is Todo todo
                         ? Results.Ok(todo)
                         : Results.NotFound());
 
-app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
+app.MapPost("/", async (Todo todo, TodoDb db) =>
                         {
                           db.Todos.Add(todo);
                           await db.SaveChangesAsync();
                           return Results.Created($"/todoitems/{todo.Id}", todo);
                         });
 
-app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
+app.MapPut("/{id}", async (int id, Todo inputTodo, TodoDb db) =>
                         {
                           var todo = await db.Todos.FindAsync(id);
                           if (todo is null) return Results.NotFound();
@@ -58,7 +60,7 @@ app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
                           return Results.NoContent(); 
                         });
 
-app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
+app.MapDelete("/{id}", async (int id, TodoDb db) =>
                         {
                           if (await db.Todos.FindAsync(id) is Todo todo)
                           {
