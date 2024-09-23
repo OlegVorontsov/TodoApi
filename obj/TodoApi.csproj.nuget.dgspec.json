@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj": {}
+    "c:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj": {
+    "c:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "c:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj",
+        "projectPath": "c:\\Users\\admin\\source\\repos\\TodoApi\\TodoApi.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\TodoApi\\obj\\",
+        "outputPath": "c:\\Users\\admin\\source\\repos\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -57,6 +57,10 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[14.1.0, )"
             }
           },
           "imports": [
