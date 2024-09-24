@@ -4,9 +4,12 @@ using TodoApi.DTOs;
 using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+var connectingString = builder.Configuration.GetConnectionString("Todos") ?? "Data Source=Todos.db";
+builder.Services.AddSqlite<TodoDb>(connectingString);
 
+//builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
 {
